@@ -13,7 +13,9 @@ public class ProjectsPage extends BasePage{
     private static final SelenideElement CREATE_PROJECT_BUTTON = $x("//*[contains(text(), 'Create project')]");
     private static final SelenideElement CREATED_PROJECT_BUTTON = $x("//*[contains(text(), 'PROJECTCOD')]");
     private static final SelenideElement NEW_TEST_BUTTON = $x("//*[contains(text(), 'New test')]");
+    private static final SelenideElement ADD_SUITE_BUTTON = $x("//*[contains(text(), 'Add suite')]");
     private static final SelenideElement SAVE_BUTTON = $x("//span[text()='Save']");
+    private static final SelenideElement CREATE_BUTTON = $x("//span[text()='Create']");
 
     public ProjectsPage() {
     }
@@ -34,8 +36,16 @@ public class ProjectsPage extends BasePage{
 
     public ProjectsPage createNewTest(String title) {
         new Button().click(NEW_TEST_BUTTON);
-        new Input("title").writeTest(title);
+        new Input("title").writeTestAndSuite(title);
         new Button().click(SAVE_BUTTON);
         return this;
     }
+
+    public ProjectsPage createNewSuite(String suiteName) {
+        new Button().click(ADD_SUITE_BUTTON);
+        new Input("suiteName").writeTestAndSuite(suiteName);
+        new Button().click(CREATE_BUTTON);
+        return this;
+    }
+
 }

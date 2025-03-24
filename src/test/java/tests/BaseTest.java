@@ -29,6 +29,7 @@ public class BaseTest {
     public static String PROJECT_NAME = PropertyReader.getProperty("projectName");
     public static String PROJECT_CODE = PropertyReader.getProperty("projectCode");
     public static String TITLE = PropertyReader.getProperty("title");
+    public static String SUITE_NAME = PropertyReader.getProperty("suiteName");
     private static final SelenideElement SETTINGS = $x("//span[contains(text(), 'Settings')]");
     private static final SelenideElement DELETE_PROJECT = $x("//span[contains(text(), 'Delete project')]");
     private static final SelenideElement DELETE_PROJECT_MODAL = $x("//button[@type='button']//span[contains(text(), 'Delete project')]");

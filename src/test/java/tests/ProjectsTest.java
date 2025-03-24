@@ -26,4 +26,11 @@ public class ProjectsTest extends BaseTest{
         projectsSteps.newTest(TITLE);
         Assert.assertEquals($x("//*[contains(text(), 'TestTitle')]").getText(), TITLE);
     }
+
+    @Test(description = "Create project and suite")
+    public void createNewSuite() {
+        createNewProject();
+        projectsSteps.newSuite(SUITE_NAME);
+        Assert.assertEquals($x("//a[contains(text(), 'suiteName')]").getText(), SUITE_NAME);
+    }
 }

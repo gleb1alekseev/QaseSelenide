@@ -23,9 +23,15 @@ public class ProjectsSteps extends BaseSteps{
                 .createNewProject(projectName, projectCode);
     }
 
-    @Step("Open projects page")
+    @Step("Create test")
     public void newTest (String title){
         projectsPage
                 .createNewTest(title);
+    }
+
+    @Step("Add suite case")
+    public void newSuite (String suiteName){
+        projectsPage
+                .createNewSuite(suiteName);
     }
 }

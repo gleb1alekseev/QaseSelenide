@@ -9,7 +9,7 @@ public class Input {
     String label;
     public String inputLocatorLogin = "//*[@name='%s']";
     public String inputLocatorProject = "//*[@id=\"project-name\"]";
-    public String inputLocatorTest = "//*[@id=\"title\"]";
+    public String inputLocatorTestAndSuite = "//*[@id=\"title\"]";
 
     public Input(String label) {
         this.label = label;
@@ -25,8 +25,8 @@ public class Input {
         return this;
     }
 
-    public Input writeTest(String text) {
-        $x(String.format(inputLocatorTest, label)).shouldBe(Condition.visible).setValue(text);
+    public Input writeTestAndSuite(String text) {
+        $x(String.format(inputLocatorTestAndSuite, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 
