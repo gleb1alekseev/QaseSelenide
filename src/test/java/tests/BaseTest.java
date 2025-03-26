@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.BasePage;
 import steps.LoginSteps;
 import steps.ProjectsSteps;
 import utils.PropertyReader;
@@ -18,7 +19,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
-public class BaseTest {
+public class BaseTest extends BasePage {
     protected LoginSteps loginSteps;
     protected ProjectsSteps projectsSteps;
 
@@ -30,9 +31,9 @@ public class BaseTest {
     public static String PROJECT_CODE = PropertyReader.getProperty("projectCode");
     public static String TITLE = PropertyReader.getProperty("title");
     public static String SUITE_NAME = PropertyReader.getProperty("suiteName");
-    private static final SelenideElement SETTINGS = $x("//span[contains(text(), 'Settings')]");
-    private static final SelenideElement DELETE_PROJECT = $x("//span[contains(text(), 'Delete project')]");
-    private static final SelenideElement DELETE_PROJECT_MODAL = $x("//button[@type='button']//span[contains(text(), 'Delete project')]");
+    public static final SelenideElement SETTINGS = $x("//span[contains(text(), 'Settings')]");
+    public static final SelenideElement DELETE_PROJECT = $x("//span[contains(text(), 'Delete project')]");
+    public static final SelenideElement DELETE_PROJECT_MODAL = $x("//button[@type='button']//span[contains(text(), 'Delete project')]");
 
     public void initPages() {
         loginSteps = new LoginSteps();

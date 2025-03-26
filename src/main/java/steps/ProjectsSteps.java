@@ -23,13 +23,31 @@ public class ProjectsSteps extends BaseSteps{
                 .createNewProject(projectName, projectCode);
     }
 
+    @Step("Create new project and delete new project")
+    public void deleteProject (){
+        projectsPage
+                .deleteProject();
+    }
+
     @Step("Create test")
     public void newTest (String title){
         projectsPage
                 .createNewTest(title);
     }
 
+    @Step("Create new case")
+    public void newCase (String title){
+        projectsPage
+                .createNewCase(title);
+    }
+
     @Step("Add suite case")
+    public void addSuite(String suiteName){
+        projectsPage
+                .addNewSuite(suiteName);
+    }
+
+    @Step("Create new suite")
     public void newSuite (String suiteName){
         projectsPage
                 .createNewSuite(suiteName);

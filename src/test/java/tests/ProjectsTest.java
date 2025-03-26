@@ -3,7 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static pages.ProjectsPage.*;
 
 public class ProjectsTest extends BaseTest{
 
@@ -17,20 +17,41 @@ public class ProjectsTest extends BaseTest{
     public void createNewProject() {
         successProjectsPage();
         projectsSteps.newProject(PROJECT_NAME, PROJECT_CODE);
-        Assert.assertEquals($x("//*[contains(text(), 'PROJECTCOD')]").getText(), PROJECT_CODE);
+        Assert.assertEquals(PROJECT_CODE_XPATH.getText(), PROJECT_CODE);
     }
 
-    @Test(description = "Create project and test")
+    @Test(description = "Create project and delete it")
+    public void deleteProjectTest() {
+        createNewProject();
+        projectsSteps.deleteProject();
+        Assert.assertEquals(NO_PROJECTS_XPATH.getText(), "Looks like you don’t have any projects yet.");
+    }
+
+    @Test(description = "Create project and new test")
     public void createNewTest() {
         createNewProject();
         projectsSteps.newTest(TITLE);
-        Assert.assertEquals($x("//*[contains(text(), 'TestTitle')]").getText(), TITLE);
+        Assert.assertEquals(TITLE_XPATH.getText(), TITLE);
     }
 
-    @Test(description = "Create project and suite")
+    @Test(description = "Create project and create new case")
+    public void createNewCase() {
+        createNewProject();
+        projectsSteps.newCase(TITLE);
+        Assert.assertEquals(TITLE_XPATH.getText(), TITLE);
+    }
+
+    @Test(description = "Create project and add suite")
+    public void addNewSuite() {
+        createNewProject();
+        projectsSteps.addSuite(SUITE_NAME);
+        Assert.assertEquals(SUITE_NAME_XPATH.getText(), SUITE_NAME);
+    }
+
+    @Test(description = "Create project and create new suite")
     public void createNewSuite() {
         createNewProject();
         projectsSteps.newSuite(SUITE_NAME);
-        Assert.assertEquals($x("//a[contains(text(), 'suiteName')]").getText(), SUITE_NAME);
+        Assert.assertEquals(SUITE_NAME_XPATH.getText(), SUITE_NAME);
     }
 }
