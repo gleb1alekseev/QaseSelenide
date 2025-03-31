@@ -7,19 +7,37 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Input {
     String label;
-    public String inputLocator = "//*[@name='%s']";
+    public String inputLocatorLogin = "//*[@name='%s']";
+    public String inputLocatorProject = "//*[@id=\"project-name\"]";
+    public String inputLocatorTestAndSuite = "//*[@id=\"title\"]";
+    public String inputTextAreaTestCaseLocator = "//*[contains(text(), '%s')]/parent::div//*[contains(@class, 'ProseMirror toastui-editor-contents')]";
 
     public Input(String label) {
         this.label = label;
     }
 
-    public Input write(String text) {
-        $x(String.format(inputLocator, label)).shouldBe(Condition.visible).setValue(text);
+    public Input writeLogin(String text) {
+        $x(String.format(inputLocatorLogin, label)).shouldBe(Condition.visible).setValue(text);
+        return this;
+    }
+
+    public Input writeProject(String text) {
+        $x(String.format(inputLocatorProject, label)).shouldBe(Condition.visible).setValue(text);
+        return this;
+    }
+
+    public Input writeTestAndSuite(String text) {
+        $x(String.format(inputLocatorTestAndSuite, label)).shouldBe(Condition.visible).setValue(text);
+        return this;
+    }
+
+    public Input writeForTextareaForTestCase(String text) {
+        $x(String.format(inputTextAreaTestCaseLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 
     public Input clear() {
-        SelenideElement element = $x(String.format(inputLocator, label));
+        SelenideElement element = $x(String.format(inputLocatorLogin, label));
         element.click();
         element.clear();
         return this;

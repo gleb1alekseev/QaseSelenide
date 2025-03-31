@@ -26,8 +26,8 @@ public class LoginPage extends BasePage {
 
     private LoginPage fillLoginForm(String email, String password) {
         isOpened();
-        new Input("email").write(email);
-        new Input("password").write(password);
+        new Input("email").writeLogin(email);
+        new Input("password").writeLogin(password);
         new Button().click(SIGN_IN);
         return this;
     }
