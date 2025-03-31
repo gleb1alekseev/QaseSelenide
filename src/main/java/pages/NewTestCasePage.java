@@ -14,10 +14,11 @@ public class NewTestCasePage extends BasePage{
     private static final SelenideElement ADD_STEP_BUTTON = $x("//*[@type='button']//*[text()=' Add step']");
     private static final SelenideElement INPUT_STEP_VALUE = $x("(//*[@class = 'OwrMko']//*[contains(@class, 'ProseMirror toastui-editor-contents')])[1]");
     public static final SelenideElement TITLE_XPATH = $x("//*[contains(text(), 'TestTitle')]");
-    public static final SelenideElement TEST_CASE_DESCRIPTION_XPATH = $x("//p[contains(text(), 'TestCaseDescription')]");
-    public static final SelenideElement TEST_CASE_PRE_CONDITION_XPATH = $x("//p[contains(text(), 'TestCasePreCondition')]");
-    public static final SelenideElement TEST_CASE_POST_CONDITION_XPATH = $x("//p[contains(text(), 'TestCasePostCondition')]");
 
+    public static final String TEST_TITLE_TEXT_XPATH = "//*[contains(text(), 'TestTitle')]";
+    public static final String TEST_CASE_DESCRIPTION_XPATH = "//p[contains(text(), 'TestCaseDescription')]";
+    public static final String TEST_CASE_PRE_CONDITION_XPATH = "//p[contains(text(), 'TestCasePreCondition')]";
+    public static final String TEST_CASE_POST_CONDITION_XPATH = "//p[contains(text(), 'TestCasePostCondition')]";
 
     public NewTestCasePage(){
     }
@@ -46,5 +47,21 @@ public class NewTestCasePage extends BasePage{
         INPUT_STEP_VALUE.setValue("FirstStep");
         new Button().click(SAVE_BUTTON);
         return this;
+    }
+
+    public static String titleTestText() {
+        return $x(String.format(TEST_TITLE_TEXT_XPATH)).getText();
+    }
+
+    public static String descriptionTestText() {
+        return $x(String.format(TEST_CASE_DESCRIPTION_XPATH)).getText();
+    }
+
+    public static String preConditionTestText() {
+        return $x(String.format(TEST_CASE_PRE_CONDITION_XPATH)).getText();
+    }
+
+    public static String postConditionTestText() {
+        return $x(String.format(TEST_CASE_POST_CONDITION_XPATH)).getText();
     }
 }

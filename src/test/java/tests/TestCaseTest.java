@@ -31,9 +31,9 @@ public class TestCaseTest extends BaseTest{
         projectsSteps.openProjects(PROJECTS_URL);
         projectsSteps.newProject(PROJECT_NAME, PROJECT_CODE);
         testCaseSteps.newTestWithFieldsAndSteps(TITLE, TEST_CASE_DESCRIPTION, TEST_CASE_PRE_CONDITION, TEST_CASE_POST_CONDITION);
-        Assert.assertEquals(TITLE_XPATH.getText(), TITLE);
-        Assert.assertEquals(TEST_CASE_DESCRIPTION_XPATH.getText(), TEST_CASE_DESCRIPTION);
-        Assert.assertEquals(TEST_CASE_PRE_CONDITION_XPATH.getText(), TEST_CASE_PRE_CONDITION);
-        Assert.assertEquals(TEST_CASE_POST_CONDITION_XPATH.getText(), TEST_CASE_POST_CONDITION);
+        Assert.assertEquals(titleTestText(), TITLE);
+        Assert.assertEquals(descriptionTestText(), TEST_CASE_DESCRIPTION);
+        Assert.assertEquals(preConditionTestText(), TEST_CASE_PRE_CONDITION);
+        Assert.assertEquals(postConditionTestText(), TEST_CASE_POST_CONDITION);
     }
 }
